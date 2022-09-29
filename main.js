@@ -157,57 +157,6 @@ document.addEventListener('DOMContentLoaded', () => {
 	  }
 	  prevTouchPosition = newPosition;
 	}
-	      
-	
-
-				window.addEventListener( 'resize', onWindowResize, false );
-
-				renderer.domElement.addEventListener('touchstart', function(e){
-					e.preventDefault();
-					touchDown=true;
-					touchX = e.touches[0].pageX;
-					touchY = e.touches[0].pageY;
-				}, false);
-
-				renderer.domElement.addEventListener('touchend', function(e){
-					e.preventDefault();
-					touchDown = false;
-				}, false);
-
-				renderer.domElement.addEventListener('touchmove', function(e){
-					e.preventDefault();
-					
-					if(!touchDown){
-						return;
-					}
-
-					deltaX = e.touches[0].pageX - touchX;
-					deltaY = e.touches[0].pageY - touchY;
-					touchX = e.touches[0].pageX;
-					touchY = e.touches[0].pageY;
-
-					rotateObject();
-
-				}, false);
-
-			}
-
-			var touchDown, touchX, touchY, deltaX, deltaY;
-
-			function rotateObject(){
-				if(current_object && reticle.visible){
-					current_object.rotation.y += deltaX / 100;
-				}
-			}
-
-			function onWindowResize() {
-
-				camera.aspect = window.innerWidth / window.innerHeight;
-				camera.updateProjectionMatrix();
-
-				renderer.setSize( window.innerWidth, window.innerHeight );
-
-			}
 
 			
   
